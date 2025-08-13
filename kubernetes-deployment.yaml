@@ -1,0 +1,38 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pharma-lab-suite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pharma-lab-suite
+  template:
+    metadata:
+      labels:
+        app: pharma-lab-suite
+    spec:
+      containers:
+        - name: pharma-lab-suite
+          image: ghcr.io/OWNER/REPO:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8501
+          env:
+            - name: STREAMLIT_BROWSER_GATHER_USAGE_STATS
+              value: "false"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pharma-lab-service
+spec:
+  type: ClusterIP
+  selector:
+    app: pharma-lab-suite
+  ports:
+    - port: 80
+      targetPort: 8501
+      protocol: TCP
+      name: http

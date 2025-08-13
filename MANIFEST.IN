@@ -1,0 +1,3 @@
+
+include requirements.txt
+recursive-include src/pharma_lab_suite/assets *

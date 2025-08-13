@@ -1,0 +1,16 @@
+
+streamlit
+numpy
+pandas
+scipy
+plotly
+scikit-learn
+networkx
+sympy
+markdown
+python-docx
+requests
+biopython
+MDAnalysis
+py3dmol
+textstat
